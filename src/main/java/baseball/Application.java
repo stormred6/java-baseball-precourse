@@ -12,8 +12,7 @@ public class Application {
         Game game = new Game();
 
         while(!isExit){
-            game.playGame(readLine());
-            printResult(game.getGameResult());
+            printResult(game.playGame(readLine()));
         }
     }
 

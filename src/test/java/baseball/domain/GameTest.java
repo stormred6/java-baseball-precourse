@@ -35,10 +35,10 @@ class GameTest {
         String oneBallInputValue = "299";
 
         //when
-        targetSetGame.playGame(oneBallInputValue);
+        String gameResult = targetSetGame.playGame(oneBallInputValue);
 
         //then
-        Assertions.assertThat(targetSetGame.getGameResult()).isEqualTo("1"+GameResult.BALL.getValue());
+        Assertions.assertThat(gameResult).isEqualTo("1"+GameResult.BALL.getValue());
     }
 
     @Test
@@ -48,10 +48,10 @@ class GameTest {
         String oneStrikeInputValue = "199";
 
         //when
-        targetSetGame.playGame(oneStrikeInputValue);
+        String gameResult = targetSetGame.playGame(oneStrikeInputValue);
 
         //then
-        Assertions.assertThat(targetSetGame.getGameResult()).isEqualTo("1"+GameResult.STRIKE.getValue());
+        Assertions.assertThat(gameResult).isEqualTo("1"+GameResult.STRIKE.getValue());
     }
 
     @Test
@@ -61,10 +61,10 @@ class GameTest {
         String oneBallAndoneStrikeInputValue = "192";
 
         //when
-        targetSetGame.playGame(oneBallAndoneStrikeInputValue);
+        String gameResult =  targetSetGame.playGame(oneBallAndoneStrikeInputValue);
 
         //then
-        Assertions.assertThat(targetSetGame.getGameResult()).isEqualTo("1볼 1스트라이크");
+        Assertions.assertThat(gameResult).isEqualTo("1볼 1스트라이크");
     }
 
     @Test
@@ -74,10 +74,10 @@ class GameTest {
         String threeStrikeInputValue = "123";
 
         //when
-        targetSetGame.playGame(threeStrikeInputValue);
+        String gameResult = targetSetGame.playGame(threeStrikeInputValue);
 
         //then
-        Assertions.assertThat(targetSetGame.getGameResult()).contains("3스트라이크");
+        Assertions.assertThat(gameResult).contains("3스트라이크");
     }
 
     @Test
@@ -87,10 +87,10 @@ class GameTest {
         String initCode = "1";
 
         //when
-        targetSetGame.playGame(initCode);
+        String gameResult = targetSetGame.playGame(initCode);
 
         //then
-        Assertions.assertThat(targetSetGame.getGameResult()).isEqualTo(GameResult.RESTART.getValue());
+        Assertions.assertThat(gameResult).isEqualTo(GameResult.RESTART.getValue());
     }
 
     @Test
@@ -100,9 +100,9 @@ class GameTest {
         String exitCode = "2";
 
         //when
-        targetSetGame.playGame(exitCode);
+        String gameResult = targetSetGame.playGame(exitCode);
 
         //then
-        Assertions.assertThat(targetSetGame.getGameResult()).isEqualTo(GameResult.EXIT.getValue());
+        Assertions.assertThat(gameResult).isEqualTo(GameResult.EXIT.getValue());
     }
 }

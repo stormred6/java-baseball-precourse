@@ -28,7 +28,7 @@ public class Game {
         targetNumbers.addAll(targetVaues);
     }
 
-    public void playGame(String inputValue){
+    public String playGame(String inputValue){
         if(inputValue.length() > FIANL_STRIKE_VALUE){
             throw new IllegalArgumentException();
         }
@@ -36,15 +36,20 @@ public class Game {
         initVariables();
 
         if(INIT_CODE.equals(inputValue)){
-            isInit = true;
-            return;
+            newTargetNumbers();
+            return GameResult.RESTART.getValue();
         }
 
         if(EXIT_CODE.equals(inputValue)){
-            isExit = true;
-            return;
+            return GameResult.EXIT.getValue();
         }
 
+        makeGameResult(inputValue);
+
+        return getGameResult();
+    }
+
+    private void makeGameResult(String inputValue) {
         setInputNumbers(inputValue);
 
         for(int i = 0; i < targetNumbers.size() ; i++){
@@ -82,17 +87,7 @@ public class Game {
         }
     }
 
-    public String getGameResult() {
-        if(isExit){
-            return GameResult.EXIT.getValue();
-        }
-
-        if(isInit){
-            initVariables();
-            newTargetNumbers();
-            return GameResult.RESTART.getValue();
-        }
-
+    private String getGameResult() {
         if(ballCount == 0 && strikeCount == 0){
             return GameResult.NOTHING.getValue();
         }
