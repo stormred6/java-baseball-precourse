@@ -18,14 +18,25 @@ class GameTest {
         List<String> targetList = Arrays.asList("1", "2", "3");
         targetSetGame = new Game(targetList);
     }
+
     @Test
-    @DisplayName("예외 테스트")
-    void exceptionPlayGameTest() {
+    @DisplayName("예외 범위 초과 테스트")
+    void exceptionOverlenghtPlayGameTest() {
         //given
         String invalidInputValue = "1234";
         //when then
         Assertions.assertThatThrownBy(() -> game.playGame(invalidInputValue))
                         .isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    @DisplayName("예외 문자열 입력 테스트")
+    void exceptionStringPlayGameTest() {
+        //given
+        String invalidInputValue = "123s";
+        //when then
+        Assertions.assertThatThrownBy(() -> game.playGame(invalidInputValue))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test

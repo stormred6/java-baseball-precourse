@@ -27,7 +27,7 @@ public class Game {
     }
 
     public String playGame(String inputValue){
-        if(inputValue.length() > FIANL_STRIKE_VALUE){
+        if(isInvalidValue(inputValue)){
             throw new IllegalArgumentException();
         }
 
@@ -129,5 +129,19 @@ public class Game {
         targetNumbers.add(String.valueOf(Randoms.pickNumberInRange(1, 9)));
         targetNumbers.add(String.valueOf(Randoms.pickNumberInRange(1, 9)));
         targetNumbers.add(String.valueOf(Randoms.pickNumberInRange(1, 9)));
+    }
+
+    private boolean isInvalidValue(String inputValue) {
+        if (inputValue == null || inputValue.length() > FIANL_STRIKE_VALUE) {
+            return true;
+        }
+
+        try {
+            Integer.parseInt(inputValue);
+        } catch (NumberFormatException e) {
+            return true;
+        }
+
+        return false;
     }
 }
