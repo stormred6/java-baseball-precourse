@@ -12,8 +12,6 @@ public class Game {
     private static final int FIANL_STRIKE_VALUE = 3;
     private List<String> inputNumbers;
     private List<String> targetNumbers;
-    private boolean isExit;
-    private boolean isInit;
     private int ballCount;
     private int strikeCount;
 
@@ -121,7 +119,6 @@ public class Game {
     }
 
     private void initVariables(){
-        isInit = false;
         strikeCount = 0;
         ballCount = 0;
         inputNumbers = new ArrayList<>();
